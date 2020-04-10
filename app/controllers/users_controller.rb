@@ -4,6 +4,12 @@ class UsersController < ApplicationController
         @users = User.all 
     end 
     def create 
+        @user = User.new(user_params)
+        if user.save
+            redirect_to user_path(@user)
+        else 
+            render :new 
+        end 
     end 
     def new
         @user = User.new 
@@ -13,15 +19,12 @@ class UsersController < ApplicationController
     def show 
     end 
     def update
-        #name, instrument, bio
         @user = User.new(params)
         if @user.update 
             redirect_to user_path(@user)
         else 
             render :edit
         end 
-    end 
-    def destroy
     end 
 
     private
