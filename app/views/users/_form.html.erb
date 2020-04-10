@@ -1,26 +1,28 @@
-<p>
-<%= f.label "Name" %>
-<%= f.text_field :name %>
-</p>
-<p>
-<%= f.label "Username" %>
-<%= f.text_field :username %>
-</p>
-<p>
-<%= f.label "Primary Instrument" %>
-<%= f.text_field :instrument %>
-</p>
-<p>
-<%= f.label "Bio" %>
-<%= f.text_field :bio %>
-</p>
-<p>
-<% #need to add nested form to selct or add band %>
-</p>
+<%= form_for @user do |f| %>
+    <p>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %>
+    </p>
+    <p>
+    <%= f.label "Username" %>
+    <%= f.text_field :username %>
+    </p>
+    <p>
+    <%= f.label "Primary Instrument" %>
+    <%= f.text_field :instrument %>
+    </p>
+    <p>
+    <%= f.label "Bio" %>
+    <%= f.text_field :bio %>
+    </p>
+    <p>
+    <% #need to add nested form to selct or add band %>
+    </p>
 
-<p>
-<%= f.label "Password" %>
-<%= f.password_field :password %>
-</p>
+    <p>
+    <%= f.label "Password" %>
+    <%= f.password_field :password %>
+    </p>
 
-<%= f.submit %>
+    <%= f.submit %>
+<% end %>
