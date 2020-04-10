@@ -1,6 +1,11 @@
 <h1>Create Profile</h1>
 
-<%= user_errors @user %>
+<% if @user.errors.any? %>
+    <h4>"Errors:"</h4>
+    <% @user.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+<% end %>
 
 <%= form_for @user do |f| %>
     <%= render 'form' %>
