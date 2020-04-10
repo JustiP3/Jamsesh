@@ -1,0 +1,20 @@
+<h1>Edit Profile</h1>
+<h2><%= @user.name %></h2>
+
+<%= form_for @user do |f| %>
+    <p>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %>
+    </p>
+    <p>
+    <%= f.label "Primary Instrument" %>
+    <%= f.text_field :instrument %>
+    </p>
+    <p>
+    <%= f.label "Bio" %>
+    <%= f.text_field :bio %>
+    </p>
+    <% #need to add nested form to selct or add band %>
+    
+    <%= f.submit %>
+<% end %>

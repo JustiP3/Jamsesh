@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before action 
     before_action :find_user, only: [:edit, :show, :update, :destroy]
     def index
         @users = User.all 
@@ -14,6 +13,8 @@ class UsersController < ApplicationController
     def show 
     end 
     def update
+        #name, instrument, bio
+
     end 
     def destroy
     end 
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:users).permit(:name, :password, :instrument)
+        params.require(:users).permit(:name, :password, :instrument, :bio)
     end 
 
     def find_user
