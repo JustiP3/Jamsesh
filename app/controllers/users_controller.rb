@@ -14,7 +14,12 @@ class UsersController < ApplicationController
     end 
     def update
         #name, instrument, bio
-
+        @user = User.new(params)
+        if @user.update 
+            redirect_to user_path(@user)
+        else 
+            render :edit
+        end 
     end 
     def destroy
     end 
