@@ -1,0 +1,12 @@
+<h1><%= @user.username %></h1>
+<p><%= @user.name %></p>
+<p><%= @user.location %></p>
+<p><%= @user.instrument %></p>
+<p><%= @user.commitment %></p>
+<p><%= @user.bio %></p>
+
+<h4>Jam Crews</h4>
+<% @user.bands.each do |band| %>
+    <p><%= link_to band.name, band_path(band) %></p>
+<% end %>
+
