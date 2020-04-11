@@ -1,6 +1,14 @@
 <h1>Create a new band</h1>
 
-<%= @error if @error %>
+<% if flash[:message] %>
+    <p><%= flash[:message] %></p>  
+<% end %>
+
+<% if @band.errors.any? %>
+    <% @band.errors.full_messages.each do |msg| %>
+        <%= msg %>
+    <% end %>
+<% end %>
 
 
 

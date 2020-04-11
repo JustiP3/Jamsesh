@@ -23,7 +23,7 @@ class BandsController < ApplicationController
     @user = User.find_by(user_params)
     
     if @user.nil?
-      @error = "User could not be found"
+      flash[:message] = "User could not be found"
       render :new
     elsif @user && @band.save 
       @band.users << @user 

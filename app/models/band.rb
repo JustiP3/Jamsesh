@@ -5,5 +5,8 @@ class Band < ApplicationRecord
     has_many :bandtags
     has_many :tags, through: :bandtags 
 
+    validates :name, uniqueness: true 
+    validates :name, presence: true 
+
     accepts_nested_attributes_for :users 
 end
