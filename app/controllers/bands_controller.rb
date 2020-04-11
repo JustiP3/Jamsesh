@@ -19,8 +19,34 @@ class BandsController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    @band = Band.new(band_params)
+    @user = User.find_by(user_params)
+    
+    if @user.nil?
+      flash[:alert] = "User not found."
+      redirect_to new_band_path
+    elsif @user && @band.save 
+      @band.users << @user 
+      redirect_to band_path(@band)
+    else 
+        render :new 
+    end 
+
+           
   end 
+
+  
   def update
   end 
+
+  private 
+
+  def band_params
+    params.require(:band).permit(:name, :location)
+  end 
+  
+  def user_params
+    params.require(:user).permit(:username)
+  end
+
 end
