@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :bands, only: [:index, :show, :new, :edit, :update, :create] do 
     resources :users, only: [:show, :index]
   end 
+  resources :posts, only: [:edit, :create, :show, :update, :destroy]
   
 end
