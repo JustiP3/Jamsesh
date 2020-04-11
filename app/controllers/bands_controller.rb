@@ -9,6 +9,8 @@ class BandsController < ApplicationController
 
   def new
     @band = Band.new 
+    @user = User.new 
+    @users = User.all 
   end
 
   def edit

@@ -1,2 +1,25 @@
-<h1>Bands#new</h1>
-<p>Find me in app/views/bands/new.html.erb</p>
+<h1>Create a new band</h1>
+
+
+<%= form_for @band do |f| %>
+    <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </p>
+
+    <p>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+    </p>
+
+    
+    <%= fields_for @user do |u| %>
+        <%= u.label :username %>
+        <%= u.collection_select(:username, @users, :username, :username) %>
+    <% end %>
+
+    <p>
+    <%= f.submit %>
+    </p>
+<% end %>
+
