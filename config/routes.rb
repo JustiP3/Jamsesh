@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
+  #Root
+  root '/', to: 'static#home'
+
 
   resources :users, only: [:new, :edit, :update, :create, :show, :index]
   resources :bands, only: [:index, :show, :new, :edit, :update, :create] do 
