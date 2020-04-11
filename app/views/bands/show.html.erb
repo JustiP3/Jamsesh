@@ -1,2 +1,8 @@
-<h1>Bands#show</h1>
-<p>Find me in app/views/bands/show.html.erb</p>
+<h1><%= @band.name %></h1>
+<p><%= @band.location %></p>
+<p>Members:</p>
+<%= @band.users.each do |member| %>
+    <p><%= link_to member.name, user_path(member) %></p>
+<% end %>
+
+<p><%= link_to "Add or Remove Member", edit_band_path(@band) %></p>

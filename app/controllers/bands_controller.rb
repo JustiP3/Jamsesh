@@ -9,8 +9,7 @@ class BandsController < ApplicationController
 
   def new
     @band = Band.new 
-    @user = User.new #collection select user
-    @user2 = User.new #type username search
+    @user = User.new 
     @users = User.all 
   end
 
@@ -23,15 +22,14 @@ class BandsController < ApplicationController
     @user = User.find_by(user_params)
     
     if @user.nil?
-      flash[:alert] = "User not found."
-      redirect_to new_band_path
+      @error = "User could not be found"
+      render :new
     elsif @user && @band.save 
       @band.users << @user 
       redirect_to band_path(@band)
     else 
         render :new 
     end 
-
            
   end 
 
