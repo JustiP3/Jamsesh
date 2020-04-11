@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:edit, :show, :update, :destroy]
+    skip_before_action :verified_user, only: [:new, :create]
+    
     def index
         @band_id = params[:band_id]
         if @band_id 
@@ -11,8 +13,8 @@ class UsersController < ApplicationController
     def create 
         @user = User.new(user_params)
         if @user.save
-            session[:username] = @user.username
-            redirect_to user_path(@user)
+            session[:user_id] = @user.id
+            redirect_to root_path
         else 
             render :new 
         end 
