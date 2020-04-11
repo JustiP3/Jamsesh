@@ -12,11 +12,23 @@
     <%= f.text_field :location %>
     </p>
 
-    
+    <h3>Add a bandmate:</h3>
+    <h4>Select user</h4>
+    <h4>or</h4>
+    <h4>Add by username</h4>
+    <p>
     <%= fields_for @user do |u| %>
         <%= u.label :username %>
-        <%= u.collection_select(:username, @users, :username, :username) %>
+        <%= u.collection_select(:username, @users, :username, :username, {include_blank: true}) %>
     <% end %>
+    </p>
+
+    <p>
+    <%= fields_for @user2 do |u| %>
+        <%= u.label :username %>
+        <%= u.text_field :username %>
+    <% end %>
+    </p>
 
     <p>
     <%= f.submit %>

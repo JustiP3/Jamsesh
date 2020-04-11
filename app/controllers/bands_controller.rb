@@ -9,7 +9,8 @@ class BandsController < ApplicationController
 
   def new
     @band = Band.new 
-    @user = User.new 
+    @user = User.new #collection select user
+    @user2 = User.new #type username search
     @users = User.all 
   end
 
@@ -18,6 +19,7 @@ class BandsController < ApplicationController
   end
 
   def create
+    raise params.inspect
   end 
   def update
   end 
