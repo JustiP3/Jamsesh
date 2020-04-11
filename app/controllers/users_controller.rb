@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
     before_action :find_user, only: [:edit, :show, :update, :destroy]
     def index
-        @users = User.all 
+        @band_id = params[:band_id]
+        if @band_id 
+            @users = Band.find_by(id: @band_id).users   
+        else 
+            @users = User.all 
+        end 
     end 
     def create 
         @user = User.new(user_params)

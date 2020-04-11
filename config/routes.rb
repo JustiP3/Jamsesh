@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
 
   #Root
-  root '/', to: 'static#home'
+  root 'static#home'
 
 
   resources :users, only: [:new, :edit, :update, :create, :show, :index]
