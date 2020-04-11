@@ -21,7 +21,7 @@
     <p>
     <%= fields_for @user do |u| %>
         <%= u.label :username %>
-        <%= u.collection_select(:username, @users, :username, :username, {include_blank: true}) %>
+        <%= u.collection_select(:username, @users, :username, :username) %>
     <% end %>
     </p>
 

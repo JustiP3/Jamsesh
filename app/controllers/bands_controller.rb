@@ -36,6 +36,7 @@ class BandsController < ApplicationController
   
   def update
   end 
+ 
 
   private 
 
