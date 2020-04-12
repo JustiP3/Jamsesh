@@ -24,13 +24,14 @@ class BandsController < ApplicationController
     @band = Band.find_by(id: params[:id])
   end
 
-  def create
-    raise params.inspect 
-    Tag.find_or_create_by(name: band_params[:tag])
+  def create   
     @band = Band.new(band_params)    
-    @user = User.find_by(user_params)     
+    @user = User.find_by(user_params)       
 
     if @band.save 
+      @tag = Tag.find_or_create_by(name: tag_params) 
+
+      @band.tags << @tag 
       @band.users << current_user 
       @band.users << @user if @user && User.find_by(id: @user.id) 
       redirect_to band_path(@band)
@@ -56,5 +57,9 @@ class BandsController < ApplicationController
   def user_params
     params.require(:user).permit(:username)
   end
+
+  def tag_params 
+    params.require(:tag)
+  end 
 
 end
