@@ -23,12 +23,14 @@ class UsersController < ApplicationController
         @user = User.new 
     end 
     def edit
+        redirect_to root_path unless current_user.id.to_s == params[:id].to_s
     end 
     def show 
     end 
     def update
-        @user = User.new(params)
-        if @user.update 
+        @user = current_user
+
+        if @user.update(user_params)
             redirect_to user_path(@user)
         else 
             render :edit

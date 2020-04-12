@@ -18,10 +18,13 @@
 
       <% if current_user %>
         <div style="display: inline-block; padding: 30px;">
-        <%= link_to "My Profile", user_path(current_user) %>
+        <%= link_to "My Profile (#{current_user.username})", user_path(current_user) %>
         </div>
         <div style="display: inline-block; padding: 30px;">
         <%= link_to "Create Band", new_band_path %>
+        </div>
+        <div style="display: inline-block; padding: 30px;">
+        <%= link_to "Edit Profile", edit_user_path(current_user) %>
         </div>
         <div style="display: inline-block; padding: 30px;">
         <%= link_to "View all bands", bands_path %>

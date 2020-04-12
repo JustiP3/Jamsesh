@@ -1,13 +1,17 @@
 <h1><%= @band.name %></h1>
 
 <div>
-    <p>band location: <%= @band.location %></p>
-    <p>Style Tags:</p>
-    <% @band.tags.each do |tag| %>
-        <p><%= tag.name %></p>
+    <p><%= "band location: " + @band.location if @band.location %></p>
+
+    <% if @band.tags.size > 0  %>
+        <p>Style Tags:</p>
+        <% @band.tags.each do |tag| %>
+            <p><%= tag.name %></p>
+        <% end %>
     <% end %>
+
     <p>Members:</p>
-    
+        
     <% @band.users.each do |member| %>
         <p><%= link_to member.name ||= member.username, user_path(member) %></p>
     <% end %>

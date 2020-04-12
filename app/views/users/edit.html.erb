@@ -9,4 +9,27 @@
 <% end %>
 
 
-<%= render 'form' %>
+<%= form_for @user do |f| %>
+    <p>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %>
+    </p>
+    <%= f.label "Location" %>
+    <%= f.text_field :location %>
+    </p>
+    <p>
+    <%= f.label "Primary Instrument" %>
+    <%= f.text_field :instrument %>
+    </p>
+    <p>
+    How commited are you? 1 = super casual - 10 = ready to go all in <br>
+    <%= f.label "Commitment Level" %>
+    <%= f.text_field :commitment %>
+    </p>
+    <p>
+    <%= f.label "Bio" %>
+    <%= f.text_area :bio %>
+    </p>
+   
+    <%= f.submit %>
+<% end %>

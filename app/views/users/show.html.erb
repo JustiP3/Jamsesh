@@ -7,7 +7,7 @@
 <%= @user.bio %></p>
 
 <h4>Jam Crews</h4>
-<%= "No Jam Crews, YET!" %>
+<%= "No Jam Crews, YET!" unless @user.bands.size > 0 %>
 <% @user.bands.each do |band| %>
     <p><%= link_to band.name, band_path(band) %></p>
 <% end %>
