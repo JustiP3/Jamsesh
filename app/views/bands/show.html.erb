@@ -33,7 +33,9 @@
     <h2>Latest Posts</h2>
     <% @band.latest_posts.each do |post| %>
         <h4><%= post.title %></h4>
-        <p><%= post.content %></p></br>
+        <p><%= post.content %></p>
+        <p>posted by <%= link_to User.find_by(id: post.author_id).username, user_path(post.author_id) %></p>
+        </br>
     <% end %>
 </div>
 
