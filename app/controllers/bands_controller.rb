@@ -6,6 +6,11 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find_by(id: params[:id])
+    if @band 
+      @post = @band.posts.build  
+    else 
+      redirect_to root_path 
+    end 
   end
 
   def new

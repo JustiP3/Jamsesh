@@ -2,6 +2,7 @@ class PostsController < ApplicationController
     def edit
     end 
     def create
+        raise params.inspect
     end 
     def update
     end 
