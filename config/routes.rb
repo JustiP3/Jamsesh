@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'tags/new'
+  get 'tags/create'
+  get 'tags/index'
   #Custom Sessions Routes ##
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
