@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username]) 
+    @user = User.find_by(username: params[:user_id]) 
     if user.authenticate(params[:password])
-      session[:username] = @user.username 
+      session[:user_id] = @user.username 
       redirect_to user_path(@user)
     else
       render :login 
@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete :username
+    session.delete :user_id
+    redirect_to root_path
   end
 
   private

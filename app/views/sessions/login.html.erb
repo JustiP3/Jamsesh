@@ -7,6 +7,13 @@
     <% end %>
 <% end %>
 
-<%= form_for @user do |user| %>
+<%= form_tag login_path do %>
+    <%= "Username: " %>
+    <%= text_field_tag :'user[username]' %><br>
 
+    <%= "Password: " %>
+    <%= password_field_tag :password %><br>
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %> 
+    <%= submit_tag "Login" %>
 <% end %>

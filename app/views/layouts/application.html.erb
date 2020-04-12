@@ -24,20 +24,26 @@
     <div>
     <%= link_to "Home", root_path %>
     </div>
+
     <% if current_user %>
-    <div>
-    <%= link_to "Log Out", logout_path %>
-    </div>
     <div>
     <%= link_to "My Profile", user_path(current_user) %>
     </div>
+    <div>
+    <%= link_to "View all bands", bands_path %>
+    </div>
+    <div>
+    <%= button_to "Log Out", logout_path, method: "delete" %>
+    </div>
+    
     <% else %>
     <div>
     <%= link_to "Log In", login_path %>
     </div>
-    <% end %>
     <div>
-    <%= link_to "View all bands", bands_path %>
+    <%= link_to "Sign Up", new_user_path %>
     </div>
+    <% end %>
+    
   </footer>
 </html>
