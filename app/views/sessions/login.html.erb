@@ -1,10 +1,9 @@
 <h1>Log In</h1>
 
-<% if @user && @user.errors.any? %>
+<% if @error %>
     <h4>Errors:</h4>
-    <% @user.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-    <% end %>
+    <p><%= @error %></p>
+
 <% elsif @user == nil %>
     <h4>Error:</h4>
     <p>That user does not exist</p>    
