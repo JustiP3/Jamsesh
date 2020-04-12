@@ -12,6 +12,7 @@
 <div style="padding:20px;">
 
     <% if @post && @post.errors.any? %>
+        <h4>Sorry, we could not submit your message.</h4>
         <% @post.errors.full_messages.each do |msg| %>
             <p><%= msg %></p>
         <% end %>
@@ -21,11 +22,11 @@
 
     <%= form_tag posts_path do %>
         <%= "Title" %><br>
-        <%= text_field_tag :title %> <br>   
+        <%= text_field_tag "post[title]" %> <br>   
         <%= "Post" %><br>      
-        <%= text_area_tag :content %> <br>  
+        <%= text_area_tag "post[content]" %> <br>  
 
-        <%= hidden_field_tag :band_id, @band.id %> 
+        <%= hidden_field_tag "post[band_id]", @band.id %> 
         <%= submit_tag "Post message to band" %>
     <% end %>
 

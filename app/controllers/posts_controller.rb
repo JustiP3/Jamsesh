@@ -2,13 +2,13 @@ class PostsController < ApplicationController
     def edit
     end 
     def create
-        raise params.inspect
         @post = Post.new(post_params)
         @post.author_id = current_user.id 
         if @post.save
             redirect_to band_path(@post.band)
         else 
-            render :"/bands/#{@post.band.id}"
+            @band = Band.find(post_params[:band_id])
+            render :"/bands/show"
         end 
         
     end 
