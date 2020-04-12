@@ -1,7 +1,7 @@
 <h1><%= @band.name %></h1>
 
 <div>
-<p><%= @band.location %></p>
+<p>band location: <%= @band.location %></p>
 <p>Members:</p>
 <% @band.users.each do |member| %>
     <p><%= link_to member.name ||= member.username, user_path(member) %></p>

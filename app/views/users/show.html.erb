@@ -1,11 +1,13 @@
 <h1><%= @user.username %></h1>
 <p><%= @user.name %></p>
-<p><%= @user.location %></p>
-<p><%= @user.instrument %></p>
-<p>Commitment Level 1-10 <%= @user.commitment %></p>
-<p><%= @user.bio %></p>
+<p><%= "user location: " + @user.location if @user.location %></p>
+<p>primary instrument: <%= @user.instrument %></p>
+<p><%= "Commitment Level 1-10: " + @user.commitment.to_s if @user.commitment %></p>
+<p>Bio: <br/>
+<%= @user.bio %></p>
 
 <h4>Jam Crews</h4>
+<%= "No Jam Crews, YET!" %>
 <% @user.bands.each do |band| %>
     <p><%= link_to band.name, band_path(band) %></p>
 <% end %>
