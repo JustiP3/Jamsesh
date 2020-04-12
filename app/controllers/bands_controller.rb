@@ -25,15 +25,18 @@ class BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
+    @band.users << current_user 
     @user = User.find_by(user_params)
     
     if @user.nil?
       flash[:message] = "User could not be found"
-      render :new
-    elsif @user && @band.save 
+      redirect_to new_band_path
+    end 
+
+    if @user && @band.save 
       @band.users << @user 
       redirect_to band_path(@band)
-    else 
+    elsif @user  
       render :new 
     end 
            
