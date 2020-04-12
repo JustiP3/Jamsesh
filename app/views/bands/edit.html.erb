@@ -1,11 +1,13 @@
-<h1>Bands#edit</h1>
-<p>Find me in app/views/bands/edit.html.erb</p>
+<h1><%= "Edit " + @band.name %></h1>
+<p>Update Band Info and/or Remove Members</p>
 
 #edit form for updating info and removing users 
 
+<p>Add Members</p>
 #custom route to add user?
 
+<p>Add Tags</p>
 # add tags form routes to tags new 
 
 
-Delete band button/form exists on this page 
+<%= button_to('Delete Band', {action: "destroy", id: @band.id}, method: :delete, data: {confirm: "Are you sure?" }) %>
