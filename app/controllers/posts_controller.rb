@@ -24,5 +24,3 @@ class PostsController < ApplicationController
     end 
 end
 
-
-rails g migration remove_field_name_from_table_name field_name:datatype
