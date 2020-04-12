@@ -17,6 +17,7 @@ class BandsController < ApplicationController
     @band = Band.new 
     @user = User.new 
     @users = User.all 
+    @tag = Tag.new 
   end
 
   def edit
@@ -24,22 +25,21 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.new(band_params)
-    @band.users << current_user 
-    @user = User.find_by(user_params)
-    
-    if @user.nil?
-      flash[:message] = "User could not be found"
-      redirect_to new_band_path
-    end 
+    raise params.inspect 
+    Tag.find_or_create_by(name: band_params[:tag])
+    @band = Band.new(band_params)    
+    @user = User.find_by(user_params)     
 
-    if @user && @band.save 
-      @band.users << @user 
+    if @band.save 
+      @band.users << current_user 
+      @band.users << @user if @user && User.find_by(id: @user.id) 
       redirect_to band_path(@band)
-    elsif @user  
+    else
+      @user = User.new 
+      @users = User.all 
+      @tag = Tag.new 
       render :new 
-    end 
-           
+    end            
   end 
 
   
@@ -50,7 +50,7 @@ class BandsController < ApplicationController
   private 
 
   def band_params
-    params.require(:band).permit(:name, :location)
+    params.require(:band).permit(:name, :location, :tag)
   end 
   
   def user_params
