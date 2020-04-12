@@ -10,15 +10,26 @@
 </div>
 
 <div style="padding:20px;">
-    <h2>Write a message to the band:</h2>
-    <%= form_for @post do |f| %>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %> <br>   
-        <%= f.label :post %><br>      
-        <%= f.text_area :content %> <br>  
 
-        <%= f.submit "Post message to band" %>
+    <% if @post && @post.errors.any? %>
+        <% @post.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+        <% end %>
+        <br/>
     <% end %>
+    <h2>Write a message to the band:</h2>
+
+    <%= form_tag posts_path do %>
+        <%= "Title" %><br>
+        <%= text_field_tag :title %> <br>   
+        <%= "Post" %><br>      
+        <%= text_area_tag :content %> <br>  
+
+        <%= hidden_field_tag :band_id, @band.id %> 
+        <%= submit_tag "Post message to band" %>
+    <% end %>
+
+
     <br>
     <h2>Latest Posts</h2>
     <% @band.latest_posts.each do |post| %>

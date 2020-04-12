@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_035400) do
+ActiveRecord::Schema.define(version: 2020_04_12_172851) do
 
   create_table "bands", force: :cascade do |t|
     t.string "name"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2020_04_10_035400) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.datetime "date"
     t.text "content"
     t.integer "band_id"
     t.integer "author_id"
