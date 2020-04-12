@@ -4,12 +4,10 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @post.author_id = current_user.id 
-        if @post.save
-            redirect_to band_path(@post.band)
-        else 
-            @band = Band.find(post_params[:band_id])
-            render :"/bands/show"
+        unless @post.save
+            flash[:message] = @post.error_string
         end 
+        redirect_to band_path(@post.band)
         
     end 
     def update

@@ -11,11 +11,9 @@
 
 <div style="padding:20px;">
 
-    <% if @post && @post.errors.any? %>
+    <% if flash[:message] %>
         <h4>Sorry, we could not submit your message.</h4>
-        <% @post.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
-        <% end %>
+            <p><%= flash[:message] %></p>
         <br/>
     <% end %>
     <h2>Write a message to the band:</h2>
