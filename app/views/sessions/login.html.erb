@@ -1,15 +1,18 @@
 <h1>Log In</h1>
 
-<% if @user.errors.any? %>
-    <h4>"Errors:"</h4>
+<% if @user && @user.errors.any? %>
+    <h4>Errors:</h4>
     <% @user.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>
+<% elsif @user == nil %>
+    <h4>Error:</h4>
+    <p>That user does not exist</p>    
 <% end %>
 
 <%= form_tag login_path do %>
     <%= "Username: " %>
-    <%= text_field_tag :'user[username]' %><br>
+    <%= text_field_tag :'sessions[username]' %><br>
 
     <%= "Password: " %>
     <%= password_field_tag :password %><br>
