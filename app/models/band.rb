@@ -9,4 +9,8 @@ class Band < ApplicationRecord
     validates :name, presence: true 
 
     accepts_nested_attributes_for :users 
+
+    def latest_posts
+        Post.where(band_id: self.id).limit(2)
+    end 
 end

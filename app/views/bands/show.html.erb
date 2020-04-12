@@ -1,11 +1,13 @@
 <h1><%= @band.name %></h1>
+
+<div>
 <p><%= @band.location %></p>
 <p>Members:</p>
-<%= @band.users.each do |member| %>
-    <p><%= link_to member.name, user_path(member) %></p>
+<% @band.users.each do |member| %>
+    <p><%= link_to member.name ||= member.username, user_path(member) %></p>
 <% end %>
-
 <p><%= link_to "Add or Remove Member", edit_band_path(@band) %></p>
+</div>
 
 <div style="padding:20px;">
     <h2>Write a message to the band:</h2>
@@ -13,11 +15,15 @@
         <%= f.label :title %><br>
         <%= f.text_field :title %> <br>   
         <%= f.label :post %><br>      
-        <%= f.text_area :content %> <br> 
-
-        need to add band id as a hidden field 
+        <%= f.text_area :content %> <br>  
 
         <%= f.submit "Post message to band" %>
+    <% end %>
+    <br>
+    <h2>Latest Posts</h2>
+    <% @band.latest_posts.each do |post| %>
+        <h4><%= post.title %></h4>
+        <p><%= post.content %></p></br>
     <% end %>
 </div>
 
