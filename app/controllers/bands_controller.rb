@@ -23,6 +23,8 @@ class BandsController < ApplicationController
   def edit
     @band = Band.find_by(id: params[:id])
     @tag = Tag.new 
+    @user = User.new 
+    @users = User.all 
   end
 
   def create   
@@ -45,7 +47,22 @@ class BandsController < ApplicationController
   end 
 
   
-  def update
+  def update 
+    @band = Band.find(params[:id])
+    @user = User.find_by(user_params)
+
+    if @user && @band 
+      @band.users << @user unless @band.users.find {|band_member| band_member.username == @user.username}
+    end 
+
+    if @band 
+      unless @band.update(band_params)
+        render :edit 
+      end 
+    end 
+
+
+    redirect_to band_path(@band)
   end 
 
   def destroy 

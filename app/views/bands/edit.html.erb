@@ -1,12 +1,32 @@
 <h1><%= "Edit " + @band.name %></h1>
+
+<% if @band.errors.any? %>
+    <% @band.errors.full_messages.each do |msg| %>
+        <%= msg %>
+    <% end %>
+    <br/>
+<% end %>
+
 <p>Update Band Info and/or Remove Members</p>
+<%= form_for @band do |f| %>
+    <p>
+    <%= f.label :location %><br/>
+    <%= f.text_field :location %>
+    </p>
 
-#edit form for updating info and removing users 
-
-<p>Add Members</p>
-#custom route to add user?
-
-<p>Add Tags</p>
+    <h3>Add a bandmate:</h3>
+    <h4>Select from list</h4>
+    <p>
+    <%= fields_for @user do |u| %>
+        <%= u.label :username %>
+        <%= u.collection_select(:username, @users, :username, :username, {include_blank: true}) %>
+    <% end %>
+    </p>
+ 
+    <%= f.submit "Update Location and/or Add Member" %>
+ <% end %>
+<br/>
+<h2>Add Tags</h2>
 <%= form_tag "/tags" do %>
     <%= "Add tag" %>
     <%= text_field_tag "tag[tag_name]" %>
