@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'tags/new'
-  get 'tags/create'
-  get 'tags/index'
   #Custom Sessions Routes ##
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -17,5 +14,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index]
   end 
   resources :posts, only: [:edit, :create, :show, :update, :destroy]
+  resources :tags, only: [:create, :index]
   
 end

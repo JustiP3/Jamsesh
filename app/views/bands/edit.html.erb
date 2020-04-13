@@ -7,13 +7,18 @@
 #custom route to add user?
 
 <p>Add Tags</p>
-<%= form_tag tags_path do %>
+<%= form_tag "/tags" do %>
     <%= "Add tag" %>
     <%= text_field_tag "tag[tag_name]" %>
     
     <%= hidden_field_tag "tag[band_name]", @band.name %> 
     <%= submit_tag "Add Tag" %>
 <% end %> 
+<p>Current Tags: <% @band.tags.each do |tag| %>
+    <%=  tag.name + ". " %>
+    <% end %>
+</p>
+
 <br/>
 <%= link_to "Cancel Changes", band_path(@band) %>
 <br/>

@@ -22,6 +22,7 @@ class BandsController < ApplicationController
 
   def edit
     @band = Band.find_by(id: params[:id])
+    @tag = Tag.new 
   end
 
   def create   
