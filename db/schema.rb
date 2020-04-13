@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_012228) do
+ActiveRecord::Schema.define(version: 2020_04_13_014229) do
 
   create_table "bands", force: :cascade do |t|
     t.string "name"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_012228) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "title"
     t.text "content"
     t.integer "user_id"
     t.integer "post_id"
