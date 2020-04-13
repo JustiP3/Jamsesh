@@ -11,11 +11,12 @@
     <% end %>
 
     <p>Members:</p>
-        
+
     <% @band.users.each do |member| %>
         <p><%= link_to member.name ||= member.username, user_path(member) %></p>
     <% end %>
-    <p><%= link_to "Add or Remove Member", edit_band_path(@band) %></p>
+    <br/>
+    <h3><%= link_to "Edit Band", edit_band_path(@band) %></h3>
 </div>
 
 <div style="padding:20px;">

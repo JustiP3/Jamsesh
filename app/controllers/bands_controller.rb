@@ -1,11 +1,11 @@
 class BandsController < ApplicationController
-  def index
-    
+  before_action :find_band, only: [:edit, :show, :update, :destroy]
+
+  def index    
     @bands = Band.all 
   end
 
   def show
-    @band = Band.find_by(id: params[:id])
     if @band 
       @post = @band.posts.build  
     else 
@@ -21,7 +21,6 @@ class BandsController < ApplicationController
   end
 
   def edit
-    @band = Band.find_by(id: params[:id])
     @tag = Tag.new 
     @user = User.new 
     @users = User.all 
@@ -48,7 +47,6 @@ class BandsController < ApplicationController
 
   
   def update 
-    @band = Band.find(params[:id])
     @user = User.find_by(user_params)
 
     if @user && @band 
@@ -60,19 +58,19 @@ class BandsController < ApplicationController
         render :edit 
       end 
     end 
-
-
     redirect_to band_path(@band)
   end 
 
   def destroy 
-    @band = Band.find(params[:id])
     @band.destroy 
     redirect_to root_path
-  end 
- 
+  end  
 
   private 
+
+  def find_band 
+    @band = Band.find_by(id: params[:id])
+  end 
 
   def band_params
     params.require(:band).permit(:name, :location, :tag)

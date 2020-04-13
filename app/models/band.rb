@@ -11,6 +11,6 @@ class Band < ApplicationRecord
     accepts_nested_attributes_for :users, :tags
 
     def latest_posts
-        Post.where(band_id: self.id).limit(2)
+        Post.where(band_id: self.id).limit(2).order("id DESC")
     end 
 end

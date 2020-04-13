@@ -7,8 +7,7 @@ class PostsController < ApplicationController
         unless @post.save
             flash[:message] = @post.error_string
         end 
-        redirect_to band_path(@post.band)
-        
+        redirect_to band_path(@post.band)        
     end 
     def update
     end 
