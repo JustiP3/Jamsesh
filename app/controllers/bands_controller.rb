@@ -29,7 +29,7 @@ class BandsController < ApplicationController
     @user = User.find_by(user_params)       
 
     if @band.save 
-      @tag = Tag.find_or_create_by(name: tag_params) 
+      @tag = Tag.find_or_create_by(tag_params) 
 
       @band.tags << @tag 
       @band.users << current_user 
@@ -65,7 +65,7 @@ class BandsController < ApplicationController
   end
 
   def tag_params 
-    params.require(:tag)
+    params.require(:tag).permit(:name)
   end 
 
 end
