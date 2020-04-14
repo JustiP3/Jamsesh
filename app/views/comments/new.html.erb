@@ -2,7 +2,7 @@
 <h1>Add Comment</h1>
 <%= form_for @comment do |f| %>
     <%= f.text_area :content %>
-    
-    <%= f.hidden_field @post.id %>
+
+    <%= f.hidden_field :post_id %>
     <%= f.submit %>
 <% end %>

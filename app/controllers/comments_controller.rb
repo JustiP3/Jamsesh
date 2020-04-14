@@ -1,15 +1,14 @@
 class CommentsController < ApplicationController
-    before_action :find_post
+    before_action :find_post, only: [:new, :destroy]
     def new 
-        @comment = Comment.new
+        @comment = @post.comments.build 
     end 
-    def create        
-        raise params.inspect 
+    def create       
         @comment = Comment.new(comment_params)
         @comment.user = current_user 
 
         if @comment.save 
-            redirect_to post_comments_path(@post, @comment)
+            redirect_to post_path(@comment.post)
         else 
             render :new 
         end 
