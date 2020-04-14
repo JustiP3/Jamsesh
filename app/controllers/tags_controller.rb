@@ -4,7 +4,8 @@ class TagsController < ApplicationController
     @band = Band.find_by(name: tag_params[:band_name])
 
     if @tag 
-      @tag.bands << Band.find_by(name: band_name)
+      @tag.bands << Band.find_by(name: @band.name)
+      @tag.save
     else 
       @band.tags.create(name: tag_params[:tag_name])
     end 

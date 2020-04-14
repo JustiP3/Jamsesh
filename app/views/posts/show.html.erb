@@ -1,8 +1,14 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
+<p><%= "post by " + User.find(@post.author_id).username %></p>
 <br>
 <h3>Comments:</h3>
 <% @comments.each do |comment| %>
     <%= comment.content %><br/>
-    posted by <%= link_to comment.user.username, user_path(comment.user.username) %><br/>
+    comment by <%= link_to comment.user.username, user_path(comment.user.username) %><br/>  
+    <br/>  
 <% end %>
+<br/>
+<p><%= link_to "Add comment", new_post_comment_path(@post) %></p>
+
+<p><%= link_to "Back to the band - " + @post.band.name, band_path(@post.band) %></p>
