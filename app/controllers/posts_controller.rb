@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    before_action :find_post, only: [:edit, :update, :show, :destroy]
+
     def edit
     end 
     def create
@@ -12,11 +14,16 @@ class PostsController < ApplicationController
     def update
     end 
     def show 
+        @comments = @post.comments 
     end 
     def destroy 
     end 
 
     private 
+
+    def find_post
+        @post = Post.find(params[:id])
+    end 
 
     def post_params
         params.require(:post).permit(:title, :content, :band_id)
