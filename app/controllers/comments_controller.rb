@@ -6,11 +6,12 @@ class CommentsController < ApplicationController
     def create        
         raise params.inspect 
         @comment = Comment.new(comment_params)
+        @comment.user = current_user 
+
         if @comment.save 
             redirect_to post_comments_path(@post, @comment)
         else 
-            flash[:message] = "A comment cannot be blank"
-            redirect_to new_post_comment_path(@post, @comment)
+            render :new 
         end 
     end 
     def index 
@@ -23,7 +24,7 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:content, :user_id, :post_id)
+        params.require(:comment).permit(:content, :post_id)
     end 
 
     def find_post
