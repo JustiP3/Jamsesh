@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     def show 
     end 
     def update
+       # redirect_to edit_user_path(current_user) unless params[:id].to_i == current_user.id 
         @user = current_user
 
         if @user.update(user_params)
