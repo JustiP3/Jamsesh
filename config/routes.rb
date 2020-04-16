@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  #omniauth
+  get '/auth/:provider/callback', to: 'sessions#create'
+
   #Root
   root 'static#home'
 
