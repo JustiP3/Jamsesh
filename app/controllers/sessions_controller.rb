@@ -8,24 +8,20 @@ class SessionsController < ApplicationController
 
   def create
     if auth_hash = request.env["omniauth.auth"]
-      #login via omniauth-github
-      oauth_email = request.env['omniauth.auth']['email']
-      if user = User.find_by(email: oauth_email)
-        session[:user_id] = user.id 
-        redirect_to user_path(user)
-      elsif user = User.find_by(session_params) 
+      self.find_by_omniauth 
+
+      if user = User.find_by(session_params) #existing user normal login
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id 
           redirect_to user_path(user)
         else
-        @error = "Sorry, the password was incorrect." if @user
+        @error = "Sorry, the password was incorrect." if user
         render :login 
+      else 
+        redirect_to root_path #if we cant find a user and if oauth does not exist 
       end 
     end 
-    
-    
-    end 
-  end
+  end 
 
   def destroy
     session.delete :user_id
