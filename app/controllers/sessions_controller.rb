@@ -7,19 +7,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if auth_hash = request.env["omniauth.auth"]
-      self.find_by_omniauth 
-
-      if user = User.find_by(session_params) #existing user normal login
-        if user && user.authenticate(params[:password])
-          session[:user_id] = user.id 
-          redirect_to user_path(user)
-        else
+    auth_hash = request.env["omniauth.auth"]
+    if user = User.find_by_omniauth(auth_hash) || user = User.find_by(session_params)
+      if (user && user.authenticate(params[:password])) || (user && auth_hash)
+        session[:user_id] = user.id 
+        redirect_to user_path(user)      
+      else
         @error = "Sorry, the password was incorrect." if user
         render :login 
-      else 
-        redirect_to root_path #if we cant find a user and if oauth does not exist 
       end 
+      
+      redirect_to root_path #if we cant find a user and if oauth does not exist    
     end 
   end 
 
