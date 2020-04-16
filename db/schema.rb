@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_014229) do
+ActiveRecord::Schema.define(version: 2020_04_16_030833) do
 
   create_table "bands", force: :cascade do |t|
     t.string "name"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_014229) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.string "location"
+    t.string "email"
   end
 
 end

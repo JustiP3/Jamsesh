@@ -19,3 +19,6 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %> 
     <%= submit_tag "Login" %>
 <% end %>
+
+<br />
+<%= link_to "Login via GitHub", "/auth/github" %>
