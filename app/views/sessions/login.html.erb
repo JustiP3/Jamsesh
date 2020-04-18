@@ -1,12 +1,10 @@
 <h1>Log In</h1>
 
 <% if @error %>
+<div class="fields_with_errors">
     <h4>Errors:</h4>
-    <p><%= @error %></p>
-
-<% elsif @user == nil %>
-    <h4>Error:</h4>
-    <p>That user does not exist</p>    
+    <p><%= @error %></p> 
+</div>
 <% end %>
 
 <%= form_tag login_path do %>

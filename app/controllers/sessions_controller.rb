@@ -19,10 +19,6 @@ class SessionsController < ApplicationController
     end 
   end 
 
-  
-
-  # dont forget to add this in there 
-
   def destroy
     session.delete :user_id
     redirect_to root_path
@@ -48,8 +44,9 @@ class SessionsController < ApplicationController
       render :login   
     
     elsif request.env["omniauth.auth"] #omni login 
+      
       if !request.env["omniauth.auth"]["info"]["email"]  #omni login but email nil
-        @error = "Please set your Github email to publically viewable in your github account settings."
+        @error = "Please set your Github email to public in your Github account settings."
         render :login
       elsif request.env["omniauth.auth"]["info"]["email"] #omni login attempt doesn't match any existing users
         flash[:message] = "You must create an account before you can log in with Github."

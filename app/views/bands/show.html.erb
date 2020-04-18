@@ -1,15 +1,17 @@
 <h1><%= @band.name %></h1>
 
 <div>
-    <p><%= "band location: " + @band.location if @band.location %></p>
+    <p><%= "Band Location: " + @band.location if @band.location %></p>
 
     <% if @band.tags.size > 0  %>
         <p>Tags:</p>
+        
         <% @band.tags.each do |tag| %>
-            <p><%= tag.name %></p>
+            <p> - <%= tag.name %></p>
         <% end %>
+        
     <% end %>
-
+    <br />
     <h3>Members:</h3>
 
     <% @band.users.each do |member| %>
@@ -47,7 +49,7 @@
         <h4><%= post.title %></h4>
         <p><%= post.content %></p>
         <p>posted by <%= link_to User.find_by(id: post.author_id).username, user_path(post.author_id) %></p>
-        <p><%= link_to "View Post and Comments", post_path(post) %></p>
+        <p><%= link_to "View Post Details and Comments", post_path(post) %></p>
         </br>
     <% end %>
 </div>
