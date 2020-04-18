@@ -62,8 +62,13 @@ class BandsController < ApplicationController
   end 
 
   def destroy 
-    @band.destroy 
-    redirect_to root_path
+    if @band.users.find {|member| member.id == current_user.id}
+      @band.destroy 
+      redirect_to root_path
+    else 
+      flash[:message] = "You can't delete a band if you are not a member."
+      redirect_to edit_band_path(@band)
+    end 
   end  
 
   private 
