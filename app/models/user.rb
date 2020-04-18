@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :username, presence: true 
 
     def self.find_by_omniauth(auth_hash)
-      oauth_email = auth_hash['omniauth.auth']['info']['email']
+      oauth_email = auth_hash['info']['email']
       user = User.find_by(email: oauth_email)  
     end 
     

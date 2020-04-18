@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   #omniauth
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/github/callback', to: 'sessions#create'
 
   #Root
   root 'static#home'
