@@ -14,6 +14,13 @@
     <%= f.label "Name" %>
     <%= f.text_field :name %>
     </p>
+    <p>
+    <% unless @user.email.length > 0 %>
+        <%= f.label "Email" %>
+        <%= f.text_field :email %>
+    <% end %>
+    </p>    
+    <p>
     <%= f.label "Location" %>
     <%= f.text_field :location %>
     </p>

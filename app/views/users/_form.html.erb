@@ -4,9 +4,14 @@
     <%= f.text_field :name %>
     </p>
     <p>
-    <%= f.label "Username" %>
+    <%= f.label "Email (if you want to log in via Github)" %>
+    <%= f.text_field :email %>
+    </p>
+    <p>
+    <%= f.label "Username(required)" %>
     <%= f.text_field :username %>
     </p>
+    <p>
     <%= f.label "Location" %>
     <%= f.text_field :location %>
     </p>
