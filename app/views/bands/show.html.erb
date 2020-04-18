@@ -4,13 +4,13 @@
     <p><%= "band location: " + @band.location if @band.location %></p>
 
     <% if @band.tags.size > 0  %>
-        <p>Style Tags:</p>
+        <p>Tags:</p>
         <% @band.tags.each do |tag| %>
             <p><%= tag.name %></p>
         <% end %>
     <% end %>
 
-    <p>Members:</p>
+    <h3>Members:</h3>
 
     <% @band.users.each do |member| %>
         <p><%= link_to member.name ||= member.username, user_path(member) %></p>
@@ -22,9 +22,11 @@
 <div style="padding:20px;">
 
     <% if flash[:message] %>
+    <div class="fields_with_errors">
         <h4>Sorry, we could not submit your message.</h4>
             <p><%= flash[:message] %></p>
         <br/>
+    </div>
     <% end %>
     <h2>Write a message to the band:</h2>
 
