@@ -23,6 +23,6 @@ eurosomething.users << loren
 
 eurosomething.tags.create(name: "singer-songwriter")
 
-post = corn.posts.create(title: "Need more Cowbell", content: "Need someone to bring something visionary to the sesh")
+corn.posts.create(title: "Need more Cowbell", content: "Need someone to bring something visionary to the sesh", author_id: greg.id)
 
 

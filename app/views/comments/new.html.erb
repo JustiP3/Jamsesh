@@ -1,5 +1,15 @@
 
 <h1>Add Comment</h1>
+
+<% if @comment.errors.any? %>
+<div class="fields_with_errors">
+    <% @band.errors.full_messages.each do |msg| %>
+        <%= msg %>
+    <% end %>
+    <br/>
+</div>
+<% end %>
+
 <%= form_for @comment do |f| %>
     <%= f.text_area :content %><br/>
 
