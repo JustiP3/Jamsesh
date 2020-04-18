@@ -39,13 +39,11 @@ class SessionsController < ApplicationController
     params.require(:sessions).permit(:username)
   end 
 
-  def user_by_omni
-    if request.env["omniauth.auth"]
-      user = User.find_by_omniauth(request.env["omniauth.auth"])
-    end 
+  def user_by_omni    
+    User.find_by_omniauth(request.env["omniauth.auth"]) if request.env["omniauth.auth"]
   end 
 
   def user_by_params
-   user = User.find_by(session_params)
+    User.find_by(session_params) if params[:sessions]
   end 
 end
