@@ -2,10 +2,12 @@
 
 
 <% if @band.errors.any? %>
+<div class="fields_with_errors">
     <% @band.errors.full_messages.each do |msg| %>
         <%= msg %>
     <% end %>
     <br/>
+</div>
 <% end %>
 
 
