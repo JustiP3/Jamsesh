@@ -25,14 +25,12 @@
     <%= f.text_field :location %>
     </p>
 
-    <h3>Add a bandmate:</h3>
-    <h4>Select from list</h4>
-    <p>
+    <h3>Add a bandmate:</h3>    
     <%= fields_for @user do |u| %>
         <%= u.label :username %>
         <%= u.collection_select(:username, @users, :username, :username, {include_blank: true}) %>
     <% end %>
-    </p>
+    
  
     <%= f.submit "Update Location and/or Add Member" %>
  <% end %>

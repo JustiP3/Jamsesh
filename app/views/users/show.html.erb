@@ -1,7 +1,7 @@
 <h1><%= @user.username %></h1>
 <p><%= @user.name %></p>
-<p><%= "location: " + @user.location if @user.location %></p>
-<p>primary instrument: <%= @user.instrument %></p>
+<p><%= "Location: " + @user.location if @user.location %></p>
+<p>Primary Instrument: <%= @user.instrument %></p>
 <p><%= "Commitment Level 1-10: " + @user.commitment.to_s if @user.commitment %></p>
 <p>Bio: <br/>
 <%= @user.bio %></p>

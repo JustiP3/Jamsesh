@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     end 
     def new
         @user = User.new 
+        @bands = Band.all 
     end 
     def edit
         redirect_to root_path unless current_user.id.to_s == params[:id].to_s
@@ -28,7 +29,6 @@ class UsersController < ApplicationController
     def show 
     end 
     def update
-       # redirect_to edit_user_path(current_user) unless params[:id].to_i == current_user.id 
         @user = current_user
 
         if @user.update(user_params)
