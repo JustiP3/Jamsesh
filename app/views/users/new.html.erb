@@ -1,19 +1,21 @@
 <h1>Create Profile</h1>
 
 <% if @user.errors.any? %>
+<div class="fields_with_errors">
     <h4>"Errors:"</h4>
     <% @user.errors.full_messages.each do |msg| %>
         <p><%= msg %></p>
     <% end %>
+</div>
 <% end %>
 
 <% if flash[:message] %>
+<div class="fields_with_errors">
     <h4>"Errors:"</h4>
     <% flash.each do |type, msg| %>
-        <div>
-          <%= msg %>
-        </div>
+          <%= msg %><br />
     <% end %>
+</div>
 <% end %>
   
 
