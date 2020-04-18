@@ -7,18 +7,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth_hash = request.env["omniauth.auth"]
-    if user = User.find_by_omniauth(auth_hash) || user = User.find_by(session_params)
-      if (user && user.authenticate(params[:password])) || (user && auth_hash)
-        session[:user_id] = user.id 
-        redirect_to user_path(user)      
-      else
-        @error = "Sorry, the password was incorrect." if user
-        render :login 
-      end 
-      
-      redirect_to root_path #if we cant find a user and if oauth does not exist    
+    user = user_by_omni
+    user ||= user_by_params
+
+    if (user && user.authenticate(params[:password])) || (user && request.env)
+      session[:user_id] = user.id 
+      redirect_to user_path(user)          
+    elsif user       
+      @error = "Sorry, the password was incorrect."
+      render :login 
+    elsif request.env 
+      flash["message"] = "You must create an account before you can log in with github."
+      redirect_to new_user_path
+    else 
+      redirect_to root_path 
     end 
+      
+     
+    
   end 
 
   def destroy
@@ -30,5 +36,15 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:sessions).permit(:username)
+  end 
+
+  def user_by_omni
+    if request.env["omniauth.auth"]
+      user = User.find_by_omniauth(request.env["omniauth.auth"])
+    end 
+  end 
+
+  def user_by_params
+   user = User.find_by(session_params)
   end 
 end
