@@ -9,8 +9,14 @@
 
 <% if flash[:message] %>
     <h4>"Errors:"</h4>
-    <p><% flash[:message] %></p>
+    <% flash.each do |type, msg| %>
+        <div>
+          <%= msg %>
+        </div>
+    <% end %>
 <% end %>
+  
+
 
 
 <%= render 'form' %>

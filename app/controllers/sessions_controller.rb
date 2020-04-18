@@ -49,15 +49,16 @@ class SessionsController < ApplicationController
     
     elsif request.env["omniauth.auth"] #omni login 
       if !request.env["omniauth.auth"]["info"]["email"]  #omni login but email nil
-        @error = "Please set your github email to publically viewable in your github account settings."
+        @error = "Please set your Github email to publically viewable in your github account settings."
         render :login
       elsif request.env["omniauth.auth"]["info"]["email"] #omni login attempt doesn't match any existing users
-        flash["message"] = "You must create an account before you can log in with github."
+        flash[:message] = "You must create an account before you can log in with Github."
         redirect_to new_user_path
       end 
-      
+
     elsif !p_user && !o_user   # if not any above errors, user tried to log in traditionally but user wasn't found 
-      @error = "Sorry we could not find that user"  
+      @error = "Sorry, we could not find that user."  
+      render :login 
     else   # catch all to not crash my app. should never execute 
       redirect_to root_path 
     end   
