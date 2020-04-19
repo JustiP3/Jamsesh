@@ -2,7 +2,7 @@
 <p><%= @user.name %></p>
 <p><%= "Location: " + @user.location if @user.location %></p>
 <p>Primary Instrument: <%= @user.instrument %></p>
-<p><%= "Commitment Level 1-10: " + @user.commitment.to_s if @user.commitment %></p>
+<p><%= "Commitment Level (1-10): " + @user.commitment.to_s if @user.commitment %></p>
 <p>Bio: <br/>
 <%= @user.bio %></p>
 

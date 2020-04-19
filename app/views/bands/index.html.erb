@@ -10,7 +10,7 @@
     <tr>
         <td><%= link_to band.name, band_path(band) %></td>
         <td>
-        <% if band.location %>
+        <% if band.location.size > 0 %>
             <%= band.location %>
             <% else %>
             <%= "Not Specified" %>
