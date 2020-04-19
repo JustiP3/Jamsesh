@@ -1,0 +1,9 @@
+<%= form_tag posts_path do %>
+    <%= "Title" %><br>
+    <%= text_field_tag "post[title]" %> <br>   
+    <%= "Post" %><br>      
+    <%= text_area_tag "post[content]" %> <br>  
+
+    <%= hidden_field_tag "post[band_id]", @band.id %> 
+    <%= submit_tag "Post message to band" %>
+<% end %>
