@@ -1,6 +1,6 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
-<p><%= "post by " + User.find(@post.author_id).username %></p>
+<p><%= link_to post_by, user_path(@post.author_id) %></p>
 <br>
 <h3>Comments:</h3>
 <% @comments.each do |comment| %>
@@ -11,4 +11,4 @@
 <br/>
 <p><%= link_to "Add comment", new_post_comment_path(@post) %></p>
 
-<p><%= link_to "Back to the band - " + @post.band.name, band_path(@post.band) %></p>
+<p><%= link_to back_to_the_band, band_path(@post.band) %></p>
