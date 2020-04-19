@@ -13,4 +13,20 @@
     <%= render partial: 'quit', locals: {band: band} if @user == current_user %></p>
 <% end %>
 
+<br />
 
+<div style="padding:20px; background-color:#C0C0C0; width: 700px;">
+<h4>Posts</h4>
+<% Post.all.select {|post| post.author_id == @user.id}.each do |post| %>
+    <p><%= link_to post.title, post_path(post) %>
+    <%= " posted on " + post.band.name + "'s band page" %></p>
+<% end %>
+<br />
+<h4>Posts Commented</h4>
+<% @user.comments.each do |comment| %>
+    <p><%= link_to comment.post.title, post_path(comment.post) %>
+    <%= " commented at " + comment.created_at.to_s %></p>
+<% end %>
+</div>
+
+    

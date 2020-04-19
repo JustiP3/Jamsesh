@@ -5,7 +5,7 @@
 <h3>Comments:</h3>
 <% @comments.each do |comment| %>
     <%= comment.content %><br/>
-    comment by <%= link_to comment.user.username, user_path(comment.user.username) %><br/>  
+    comment by <%= link_to comment.user.username, user_path(comment.user) %><br/>  
     <br/>  
 <% end %>
 <br/>

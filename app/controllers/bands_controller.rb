@@ -27,11 +27,12 @@ class BandsController < ApplicationController
   end
 
   def create   
-    @band = Band.new(band_params)    
-    @user = User.find_by(user_params)       
+    @band = Band.new
+    @user = User.find_by(user_params)     
 
-    if @band.save 
-      @band.set_band_attributes(tag_params, @user, current_user)     
+    @band.set_band_attributes(band_params, tag_params, @user, current_user)  
+
+    if @band.save    
       redirect_to band_path(@band)
     else
       @user = User.new 
@@ -73,7 +74,7 @@ class BandsController < ApplicationController
   end 
 
   def band_params
-    params.require(:band).permit(:name, :location, :tag)
+    params.require(:band).permit(:name, :location)
   end 
   
   def user_params

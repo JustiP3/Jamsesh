@@ -14,12 +14,12 @@ class Band < ApplicationRecord
         Post.where(band_id: self.id).limit(2).order("id DESC")
     end 
 
-    def set_band_attributes(tag_text, user, current_user)
-        unless tag_text == ""
-            tag = Tag.find_or_create_by(tag_text) 
-            self.tags << tag 
-        end           
-    
+    def set_band_attributes(band_params, tag_params, user, current_user)
+        unless tag_params[:name] == ""
+            self.tags << Tag.find_or_create_by(tag_params[:name]) 
+        end  
+        self.location = band_params[:location] 
+        self.name =   band_params[:name]  
         self.users << current_user 
         self.users << user if user
     end 
