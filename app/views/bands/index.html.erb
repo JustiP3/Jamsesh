@@ -1,5 +1,31 @@
 <h1>Band List</h1>
 
-<% @bands.each do |band| %>
-    <p><%= link_to band.name, band_path(band) %></p>
-<% end %>
+<table>
+  <tr style="padding: 10px;">
+    <th>Band Name</th>
+    <th>Location</th>
+    <th>Style</th>
+  </tr>
+  <% @bands.each do |band| %>
+    <tr>
+        <td><%= link_to band.name, band_path(band) %></td>
+        <td>
+        <% if band.location %>
+            <%= band.location %>
+            <% else %>
+            <%= "Not Specified" %>
+        <% end %>
+        </td>
+        <td>
+        <% if band.tags.size > 0 %>
+            <% band.tags.each do |tag| %>
+                <%= tag.name + "." %>
+                <% end %>
+            <% else %>
+            <%= "None Specified" %>
+        <% end %>
+        </td>
+    </tr>
+  <% end %>
+
+</table>
