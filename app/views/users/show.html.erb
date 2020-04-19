@@ -9,6 +9,8 @@
 <h4>Jam Crews</h4>
 <%= "No Jam Crews, YET!" unless @user.bands.size > 0 %>
 <% @user.bands.each do |band| %>
-    <p><%= link_to band.name, band_path(band) %></p>
+    <p><%= link_to band.name, band_path(band) %>
+    <%= render partial: 'quit', locals: {band: band} if @user == current_user %></p>
 <% end %>
+
 

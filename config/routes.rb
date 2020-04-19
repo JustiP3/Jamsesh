@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   #Root
   root 'static#home'
 
+  #Custom quit band route
+  post '/bands/:band_id/users/:id', to: 'users#quit'
+
 
   resources :users, only: [:new, :edit, :update, :create, :show, :index]
   resources :bands do 

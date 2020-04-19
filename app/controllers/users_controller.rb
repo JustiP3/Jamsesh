@@ -38,6 +38,15 @@ class UsersController < ApplicationController
         end 
     end 
 
+    def quit 
+        if params[:id] == current_user.id 
+            @band = Band.find(params[:band_id])
+            @join = Userband.find_by(band_id: @band.id, user_id: current_user.id)
+            @join.delete             
+        end 
+        redirect_to user_path(current_user)
+    end 
+
     private
 
     def user_params
