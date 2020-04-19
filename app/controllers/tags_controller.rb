@@ -14,6 +14,7 @@ class TagsController < ApplicationController
   end
 
   def index 
+    @tags = Tag.all 
   end
   
   private 
