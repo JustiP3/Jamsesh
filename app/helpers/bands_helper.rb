@@ -1,14 +1,17 @@
 module BandsHelper
-    def band_location
-        <p><%= "Band Location: " + @band.location if @band.location %></p>
+    def band_location(band)
+        if band.location.size > 0
+            "Band Location: " + band.location 
+        else 
+            "Band Location: Not specified"
+        end    
+    end 
 
-    <% if @band.tags.size > 0  %>
-        <p>Tags:</p>
-        
-        <% @band.tags.each do |tag| %>
-            <p> - <%= tag.name %></p>
-        <% end %>
-        
-    <% end %>
+    def member_info(user)
+        string = user.username
+        if user.instrument.size > 0
+            string << " - " + user.instrument
+        end 
+        string 
     end 
 end

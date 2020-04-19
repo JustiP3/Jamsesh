@@ -1,13 +1,22 @@
 <h1><%= @band.name %></h1>
 
 <div>
-    <%= band_location %>
+    <p><%= band_location(@band) %></p>
+    
+    <% if @band.tags.size > 0  %>
+        <p>Tags:</p>
+    
+        <% @band.tags.each do |tag| %>
+            <p> - <%= tag.name %></p>
+        <% end %>    
+    <% end %>
+
     <br />
+
     <h3>Members:</h3>
 
     <% @band.users.each do |member| %>
-        <p><%= link_to member.username, user_path(member) %>
-        <%= " - " + member.instrument if member.instrument %></p>
+        <p><%= link_to member_info(member), user_path(member) %></p>
     <% end %>
     <br/>
     <h3><%= link_to "Edit Band", edit_band_path(@band) %></h3>
