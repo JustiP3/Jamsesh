@@ -31,11 +31,7 @@ class BandsController < ApplicationController
     @user = User.find_by(user_params)       
 
     if @band.save 
-      @tag = Tag.find_or_create_by(tag_params) 
-
-      @band.tags << @tag 
-      @band.users << current_user 
-      @band.users << @user if @user && User.find_by(id: @user.id) 
+      @band.set_band_attributes(tag_params, @user, current_user)     
       redirect_to band_path(@band)
     else
       @user = User.new 
@@ -47,18 +43,17 @@ class BandsController < ApplicationController
 
   
   def update 
-    @user = User.find_by(user_params)
-
-    if @user && @band 
-      @band.users << @user unless @band.users.find {|band_member| band_member.username == @user.username}
-    end 
+    @user = User.find_by(user_params)  
 
     if @band 
-      unless @band.update(band_params)
-        render :edit 
-      end 
+      @band.update_band_attributes(band_params, @user)
     end 
-    redirect_to band_path(@band)
+    
+    if @band.save 
+      redirect_to band_path(@band)
+    else 
+      render :edit 
+    end 
   end 
 
   def destroy 
