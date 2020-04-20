@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     end 
 
     def quit 
-        if params[:id] == current_user.id 
+        if params[:id].to_s == current_user.id.to_s
             @band = Band.find(params[:band_id])
             @join = Userband.find_by(band_id: @band.id, user_id: current_user.id)
             @join.delete             
