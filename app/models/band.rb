@@ -16,7 +16,7 @@ class Band < ApplicationRecord
 
     def set_band_attributes(band_params, tag_params, user, current_user)
         unless tag_params[:name] == ""
-            self.tags << Tag.find_or_create_by(tag_params[:name]) 
+            self.tags << Tag.find_or_create_by(name: tag_params[:name]) 
         end  
         self.location = band_params[:location] 
         self.name =   band_params[:name]  
