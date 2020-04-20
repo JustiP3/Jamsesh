@@ -1,7 +1,7 @@
 # README
 
 Description:
-This is a Ruby web application that helps connect musicians who want to make music. Users can create a band or search for existing bands to join. Users interact by writing a post on a band's page and/or by commenting on existing posts. 
+This is a Rails web application that helps connect musicians who want to make music. Users can create a band or search for existing bands to join. Users interact by writing a post on a band's page and/or by commenting on existing posts. 
 
 Install Instructions:
 In order to use this web application a local server needs to be hosted, as this web application is not hosted on any website at this time.
