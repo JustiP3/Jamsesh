@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post '/bands/:band_id/users/:id', to: 'users#quit'
 
 
+
   resources :users, only: [:new, :edit, :update, :create, :show, :index]
   resources :bands do 
     resources :users, only: [:show, :index]

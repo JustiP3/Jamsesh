@@ -1,4 +1,9 @@
 <h1>Tags</h1>
+
+<p><%= render 'search' %></p>
+<p><%= link_to "Show All Tags", tags_path %></p>
+<br />
+
 <% @tags.each do |tag| %>
     <p>
     <%= tag.name + ": " %><br />

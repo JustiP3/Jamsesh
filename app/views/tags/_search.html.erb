@@ -1,0 +1,10 @@
+
+
+
+<%= form_tag("/tags", method: :get) do  %>
+    <p>Filter Results
+    <%= text_field_tag :tag_name %></p>
+    <%= submit_tag "Search" %>
+<% end %>
+
+

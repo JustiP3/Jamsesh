@@ -14,12 +14,24 @@ class TagsController < ApplicationController
   end
 
   def index 
-    @tags = Tag.all 
+    if search_params[:tag_name]
+      @tags = []
+      @tags << Tag.find_by(name: search_params[:tag_name])
+    else 
+      @tags = Tag.all
+    end 
+    
   end
+
+
   
   private 
 
   def tag_params 
     params.require(:tag).permit(:tag_name, :band_name)
+  end 
+
+  def search_params
+    params.permit(:tag_name)
   end 
 end
