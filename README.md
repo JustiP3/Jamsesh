@@ -3,6 +3,9 @@
 Description:
 This is a Rails web application that helps connect musicians who want to make music. Users can create a band or search for existing bands to join. Users interact by writing a post on a band's page and/or by commenting on existing posts. 
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GfV8A79pFYI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Install Instructions:
 In order to use this web application a local server needs to be hosted, as this web application is not hosted on any website at this time.
 To host this web application locally:
